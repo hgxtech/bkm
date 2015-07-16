@@ -1,0 +1,31 @@
+<h1>Listing plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Notes</th>
+      <th>From date</th>
+      <th>To date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= plan.user %></td>
+        <td><%= plan.notes %></td>
+        <td><%= plan.from_date %></td>
+        <td><%= plan.to_date %></td>
+        <td><%= link_to 'Show', plan %></td>
+        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
+        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plan', new_plan_path %>
