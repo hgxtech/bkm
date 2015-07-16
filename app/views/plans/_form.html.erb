@@ -1,14 +1,28 @@
-<%= simple_form_for(@plan) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :user %>
-    <%= f.input :notes %>
-    <%= f.input :from_date %>
-    <%= f.input :to_date %>
+<%= form_for @plans, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :notes, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :notes, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :from_date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :from_date, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :to_date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :to_date, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  plans_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
