@@ -29,6 +29,7 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
+    @plans.user = current_user
 
     respond_to do |format|
       if @plan.save
